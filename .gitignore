@@ -1,0 +1,8 @@
+tmp
+
+*_templ.go
+
+.DS_Store
+
+static/tailwind.css
+node_modules

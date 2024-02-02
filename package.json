@@ -1,0 +1,11 @@
+{
+  "name": "casa-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tailwindcss -i ./static/main.css -o ./static/tailwind.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
