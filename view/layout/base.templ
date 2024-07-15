@@ -13,5 +13,26 @@ templ Base(title string) {
 		<body>
 			{ children... }
 		</body>
+		<script>
+			let loc = window.location;
+			let uri = loc.protocol === 'https:' ? 'wss:' : 'ws:';
+			uri += '\/\/' + loc.host;
+			uri += loc.pathname + 'reload';
+
+			function tryConnect() {
+				socket = new WebSocket(uri);
+				socket.onopen = function() {
+					location.reload();
+				};
+				socket.onerror = function() {
+					setTimeout(tryConnect, 100);
+				};
+			}
+
+			let socket = new WebSocket(uri);
+			socket.onclose = function() {
+				setTimeout(tryConnect, 100);
+			};
+		</script>
 	</html>
 }
